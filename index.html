@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Survey</title>
+</head>
+<body>
+  <h1>Quick Survey</h1>
+  <form id="surveyForm">
+    <label>How satisfied are you?</label><br>
+    <input type="radio" name="satisfaction" value="1">1
+    <input type="radio" name="satisfaction" value="2">2
+    <input type="radio" name="satisfaction" value="3">3
+    <input type="radio" name="satisfaction" value="4">4
+    <input type="radio" name="satisfaction" value="5">5<br><br>
+    
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    const startTime = Date.now();
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxdVukPVYnvCPZdRuvIFtNX-AQG29ZTzsd62l4LiK-mtc4X_odFE-_Sm72Hl_ZWAZVL/exec';
+
+    document.getElementById('surveyForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const endTime = Date.now();
+      const duration = ((endTime - startTime) / 1000).toFixed(2); // seconds
+
+      const formData = new FormData(this);
+      const satisfaction = formData.get('satisfaction');
+
+      const data = {
+        satisfaction: satisfaction,
+        timeSpent: duration
+      };
+
+      fetch(scriptURL, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+        alert("Thanks for your response!");
+        console.log("Response saved:", response);
+      })
+      .catch(error => {
+        alert("Error submitting form");
+        console.error("Error:", error);
+      });
+    });
+  </script>
+</body>
+</html>
