@@ -28,6 +28,7 @@ function start_over() {
     start_btn.style.display = "block";
     survey_form.style.display = "none";
     thank_you_page.style.display = "none";
+    document.getElementById("inputField").value = "";
 }
 
 document.getElementById('surveyForm').addEventListener('submit', function(e) {
@@ -56,6 +57,9 @@ document.getElementById('surveyForm').addEventListener('submit', function(e) {
         console.error("Error:", error);
     });
 
+    // clear text
+    document.getElementById("inputField").value = "";
+
     // go to next image
     img_index++;
     if (img_index >= image_names.length) {
@@ -66,6 +70,5 @@ document.getElementById('surveyForm').addEventListener('submit', function(e) {
         return;
     }
     document.getElementById("img1").src = "./images/" + image_names[img_index];
-    document.getElementById("inputField").value = ""; // clear text
     start_time = Date.now();
 });
