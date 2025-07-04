@@ -2,22 +2,71 @@
 <html>
 <head>
   <title>Rentgenu diagnoze</title>
+  <meta charset="UTF-8">
 </head>
 <body>
   <h1>Rentgenu diagnoze</h1>
-  <button id="startBtn" onclick="start_test()">Sākt</button>
-  <form id="surveyForm">
-    <label>Kāda ir diagnoze?</label><br>
-    <img id="img1" src="./images/image1.png" alt="Bilde neielādējās" style="width: 35vw; min-width: 330px;">
-    <br>
-    <textarea id="inputField" name="diagnoze" rows="10" cols="30"></textarea>
-    <br>
-    <button type="submit">Nākamais</button>
-  </form>
+
+  <div id="nameInputPage">
+    <form id="nameForm">
+      <label>Dalībnieka kods/vārds:</label>
+      <input type="text" id="username" name="username">
+    </form>
+  </div>
+
+  <div id="testSelectPage">
+    <p>Izvēlies variantu</p>
+    <button id="test">Testa variants</button>
+    <div class="grid">
+      <button id="V1" type="button" value="V1" onclick="select_test(this)">V1</button>
+      <button id="V2" type="button" value="V2" onclick="select_test(this)">V2</button>
+      <button id="V3" type="button" value="V3" onclick="select_test(this)">V3</button>
+      <button id="V4" type="button" value="V4" onclick="select_test(this)">V4</button>
+      <button id="V5" type="button" value="V5" onclick="select_test(this)">V5</button>
+      <button id="V6" type="button" value="V6" onclick="select_test(this)">V6</button>
+      <button id="V7" type="button" value="V7" onclick="select_test(this)">V7</button>
+      <button id="V8" type="button" value="V8" onclick="select_test(this)">V8</button>
+      <button id="V8" type="button" value="V8" onclick="select_test(this)">V8</button>
+      <button id="V9" type="button" value="V9" onclick="select_test(this)">V9</button>
+      <button id="V10" type="button" value="V10" onclick="select_test(this)">V10</button>
+      <button id="V11" type="button" value="V11" onclick="select_test(this)">V11</button>
+      <button id="V12" type="button" value="V12" onclick="select_test(this)">V12</button>
+      <button id="V13" type="button" value="V13" onclick="select_test(this)">V13</button>
+      <button id="V14" type="button" value="V14" onclick="select_test(this)">V14</button>
+      <button id="V15" type="button" value="V15" onclick="select_test(this)">V15</button>
+      <button id="V16" type="button" value="V16" onclick="select_test(this)">V16</button>
+      <button id="V17" type="button" value="V17" onclick="select_test(this)">V17</button>
+      <button id="V18" type="button" value="V18" onclick="select_test(this)">V18</button>
+      <button id="V19" type="button" value="V19" onclick="select_test(this)">V19</button>
+      <button id="V20" type="button" value="V20" onclick="select_test(this)">V20</button>
+    </div>
+  </div>
+
+  <div id="textExplanationPage">
+    <p>
+      Jums būs doti secīgi 10 krūšu RTG attēli AP vai PA projekcijā.
+      Katram attēlam jānorāda TIKAI diagnozi teksta lodziņā. 
+      Ja ir atrodamas vairākas patoloģijas, lūdzu norādīt visas diagnozes. 
+      Ja patoloģija nav atrodama, norādiet vārdu "Norma". 
+      Pēc katra attēla izanalizēšanas spiežat uz pogas "Nākošais"
+    </p>
+    <button id="startBtn" onclick="start_test()">Sākt</button>
+  </div>
+
+  <div id="diagnosisInputPage">
+    <form id="diagnosisForm" class="hor_flex">
+      <img id="img1" src="./images/image1.png" alt="Rentgena bilde" style="width: 35vw; min-width: 330px;">
+      <div class="vert_flex">
+        <label>Diagnoze(-s):</label>
+        <textarea id="inputField" name="diagnoze" rows="10" cols="30"></textarea>
+        <button type="submit">Nākošais</button>
+      </div>
+    </form>
+  </div>
 
   <div id="thankYouPage">
-    <h1>Paldies!</h1>
-    <button id="returnBtn" onclick="start_over()">Uz sākumu</button>
+    <h1>Paldies par darbu!</h1>
+    <button id="returnBtn" onclick="to_beginning()">Uz sākumu</button>
   </div>
 
   <script src="./scripts/main.js"></script>
