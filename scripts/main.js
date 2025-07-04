@@ -4,10 +4,12 @@ const image_names = [
     "image3.png",
     "image4.png"
 ];
-const script_url = 'https://script.google.com/macros/s/AKfycbxdVukPVYnvCPZdRuvIFtNX-AQG29ZTzsd62l4LiK-mtc4X_odFE-_Sm72Hl_ZWAZVL/exec';
+const script_url = "https://script.google.com/macros/s/AKfycbxdVukPVYnvCPZdRuvIFtNX-AQG29ZTzsd62l4LiK-mtc4X_odFE-_Sm72Hl_ZWAZVL/exec";
 let start_time = Date.now();
 let img_index = 0;
 let username = "";
+let run_id = 0;
+let version = "";
 
 let name_input_page = document.getElementById("nameInputPage");
 let test_select_page = document.getElementById("testSelectPage");
@@ -29,13 +31,15 @@ document.getElementById("nameForm").addEventListener("submit", function(e) {
     }
     console.log("Name ok");
     username = name;
+    let curr_time = new Date();
+    run_id = curr_time.getTime();
     name_input_page.style.display = "none";
     test_select_page.style.display = "block";
     document.getElementById("username").value = ""; // clear text
 });
 
 function select_test(button) {
-    let version = button.value;
+    version = button.value;
     console.log(version);
     test_select_page.style.display = "none";
     test_explanation_page.style.display = "block";
@@ -51,11 +55,11 @@ function start_test() {
 
 document.getElementById("diagnosisForm").addEventListener("submit", function(e) {
     e.preventDefault();
-    const endTime = Date.now();
-    const duration = ((endTime - start_time) / 1000).toFixed(2); // seconds
+    const end_time = Date.now();
+    const duration = ((end_time - start_time) / 1000).toFixed(2); // seconds
 
-    const formData = new FormData(this);
-    const diagnoze = formData.get("diagnoze");
+    const form_data = new FormData(this);
+    const diagnoze = form_data.get("diagnoze");
 
     if (!diagnoze) {
         alert("Lūdzu ievadiet diagnozi.");
@@ -63,13 +67,18 @@ document.getElementById("diagnosisForm").addEventListener("submit", function(e) 
     }
 
     // send/publish result
-    // TODO add username
-    const url = `${script_url}?diagnoze=${encodeURIComponent(diagnoze)}&timeSpent=${encodeURIComponent(duration)}`;
+    const url = script_url
+        + "?run_id="        + encodeURIComponent(run_id)
+        + "&username="      + encodeURIComponent(username)
+        + "&version="       + encodeURIComponent(version)
+        + "&img="           + encodeURIComponent(image_names[img_index])
+        + "&diagnoze="      + encodeURIComponent(diagnoze)
+        + "&time_spent="    + encodeURIComponent(duration);
     fetch(url)
     .then(response => response.text())
     .then(result => {
         // alert("Thank you! Your response has been saved.");
-        console.log("Server result:", result, "Name:", username);
+        console.log("Server result:", result, "Run ID:", run_id);
     })
     .catch(error => {
         alert("Radās kļūda iesniedzot iepriekšējo atbildi.");
