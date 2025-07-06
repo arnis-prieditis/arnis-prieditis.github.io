@@ -3,20 +3,19 @@
 <head>
   <title>Rentgenu diagnoze</title>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="mystyle.css">
 </head>
 <body>
-  <h1>Rentgenu diagnoze</h1>
-
   <div id="nameInputPage">
-    <form id="nameForm">
-      <label>Dalībnieka kods/vārds:</label>
-      <input type="text" id="username" name="username">
+    <form id="nameForm" class="vert_flex">
+      <label class="big_text">Dalībnieka kods/vārds:</label>
+      <input type="text" id="username" name="username" class="input">
     </form>
   </div>
 
-  <div id="testSelectPage">
-    <p>Izvēlies variantu</p>
-    <button id="test" type="button" value="test" onclick="select_test(this)">Testa variants</button>
+  <div id="testSelectPage" class="vert_flex">
+    <p id="selectVersText" class="big_text">Izvēlies variantu</p>
+    <button id="testBtn" type="button" value="test" onclick="select_test(this)">Testa variants</button>
     <div class="grid">
       <button id="V1" type="button" value="V1" onclick="select_test(this)">V1</button>
       <button id="V2" type="button" value="V2" onclick="select_test(this)">V2</button>
@@ -25,7 +24,6 @@
       <button id="V5" type="button" value="V5" onclick="select_test(this)">V5</button>
       <button id="V6" type="button" value="V6" onclick="select_test(this)">V6</button>
       <button id="V7" type="button" value="V7" onclick="select_test(this)">V7</button>
-      <button id="V8" type="button" value="V8" onclick="select_test(this)">V8</button>
       <button id="V8" type="button" value="V8" onclick="select_test(this)">V8</button>
       <button id="V9" type="button" value="V9" onclick="select_test(this)">V9</button>
       <button id="V10" type="button" value="V10" onclick="select_test(this)">V10</button>
@@ -42,30 +40,30 @@
     </div>
   </div>
 
-  <div id="textExplanationPage">
-    <p>
+  <div id="textExplanationPage" class="vert_flex">
+    <p id="explanation">
       Jums būs doti secīgi 10 krūšu RTG attēli AP vai PA projekcijā.
       Katram attēlam jānorāda TIKAI diagnozi teksta lodziņā. 
       Ja ir atrodamas vairākas patoloģijas, lūdzu norādīt visas diagnozes. 
       Ja patoloģija nav atrodama, norādiet vārdu "Norma". 
       Pēc katra attēla izanalizēšanas spiežat uz pogas "Nākošais"
     </p>
-    <button id="startBtn" onclick="start_test()">Sākt</button>
+    <button id="startBtn" onclick="start_test()">Sākt testu</button>
   </div>
 
   <div id="diagnosisInputPage">
     <form id="diagnosisForm" class="hor_flex">
-      <img id="img1" src="./images/image1.png" alt="Rentgena bilde" style="width: 35vw; min-width: 330px;">
+      <img id="img1" src="./images/image1.png" alt="Rentgena bilde">
       <div class="vert_flex">
-        <label>Diagnoze(-s):</label>
-        <textarea id="inputField" name="diagnoze" rows="10" cols="30"></textarea>
-        <button type="submit">Nākošais</button>
+        <label class="big_text">Diagnoze(-s):</label>
+        <textarea id="inputField" class="input" name="diagnoze" rows="10" cols="30"></textarea>
+        <button id="nextBtn" type="submit">Nākošais</button>
       </div>
     </form>
   </div>
 
-  <div id="thankYouPage">
-    <h1>Paldies par darbu!</h1>
+  <div id="thankYouPage" class="vert_flex">
+    <p id="thankYouText" class="big_text">Paldies par darbu!</p>
     <button id="returnBtn" onclick="to_beginning()">Uz sākumu</button>
   </div>
 

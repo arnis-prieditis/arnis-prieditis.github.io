@@ -1,0 +1,74 @@
+body {
+    background-color: #131f34;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.big_text {
+    color: white;
+    font-size: 60px;
+}
+
+.vert_flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+    text-align: center;
+}
+
+.hor_flex {
+    display: flex;
+    align-items: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    column-gap: 25px;
+    row-gap: 25px;
+    padding: 25px;
+}
+
+button {
+    color: white;
+    background-color: black;
+    border-color: #729fcf;
+    border-width: 3px;
+    padding: 10px 20px;
+    font-size: 60px;
+}
+
+.input {
+    color: #729fcf;
+    background-color: black;
+    border-color: #729fcf;
+    border-width: 3px;
+}
+
+#username {
+    font-size: 60px;
+    padding: 10px;
+}
+
+#explanation {
+    color: white;
+    font-size: 30px;
+    padding: 150px 100px;
+}
+
+#inputField {
+    font-size: 30px;
+    margin: 25px;
+}
+
+img {
+    width:auto;
+    height:auto;
+    max-width:100%;
+    max-height:90vh;
+}
+
+#thankYouText {
+    padding: 150px 100px;
+}
