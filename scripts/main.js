@@ -118,23 +118,25 @@ document.getElementById("diagnosisForm").addEventListener("submit", function(e) 
     }
 
     // send/publish result
-    const url = script_url
-        + "?run_id="        + encodeURIComponent(run_id)
-        + "&username="      + encodeURIComponent(username)
-        + "&version="       + encodeURIComponent(version)
-        + "&img="           + encodeURIComponent(img_name_list[img_index])
-        + "&diagnoze="      + encodeURIComponent(diagnoze)
-        + "&time_spent="    + encodeURIComponent(duration);
-    fetch(url)
-    .then(response => response.text())
-    .then(result => {
-        // alert("Thank you! Your response has been saved.");
-        console.log("Server result:", result, "Run ID:", run_id);
-    })
-    .catch(error => {
-        alert("Radās kļūda iesniedzot iepriekšējo atbildi.");
-        console.error("Error:", error);
-    });
+    if (version != "test") {
+        const url = script_url
+            + "?run_id="        + encodeURIComponent(run_id)
+            + "&username="      + encodeURIComponent(username)
+            + "&version="       + encodeURIComponent(version)
+            + "&img="           + encodeURIComponent(img_name_list[img_index])
+            + "&diagnoze="      + encodeURIComponent(diagnoze)
+            + "&time_spent="    + encodeURIComponent(duration);
+        fetch(url)
+        .then(response => response.text())
+        .then(result => {
+            // alert("Thank you! Your response has been saved.");
+            console.log("Server result:", result, "Run ID:", run_id);
+        })
+        .catch(error => {
+            alert("Radās kļūda iesniedzot iepriekšējo atbildi.");
+            console.error("Error:", error);
+        });
+    }
 
     // clear text
     document.getElementById("inputField").value = "";
