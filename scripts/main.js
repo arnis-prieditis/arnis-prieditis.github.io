@@ -6756,26 +6756,28 @@ document.getElementById("diagnosisForm").addEventListener("submit", function(e) 
     neatzimetas_sk = pareizas_atbildes.length - pareizas_sk;
 
     // send/publish result
-    const url = script_url
-        + "?run_id="         + encodeURIComponent(run_id)
-        + "&username="       + encodeURIComponent(username)
-        + "&version="        + encodeURIComponent(version)
-        + "&img="            + encodeURIComponent(curr_test_list[img_index]["Bilde"])
-        + "&atzimetas_sk="   + encodeURIComponent(atzimetas_sk)
-        + "&pareizas_sk="    + encodeURIComponent(pareizas_sk)
-        + "&nepareizas_sk="  + encodeURIComponent(nepareizas_sk)
-        + "&neatzimetas_sk=" + encodeURIComponent(neatzimetas_sk)
-        + "&time_spent="     + encodeURIComponent(duration);
-    fetch(url)
-    .then(response => response.text())
-    .then(result => {
-        // alert("Thank you! Your response has been saved.");
-        console.log("Server result:", result, "Run ID:", run_id);
-    })
-    .catch(error => {
-        alert("Radās kļūda iesniedzot iepriekšējo atbildi.");
-        console.error("Error:", error);
-    });
+    if (version != "test") {
+        const url = script_url
+            + "?run_id="         + encodeURIComponent(run_id)
+            + "&username="       + encodeURIComponent(username)
+            + "&version="        + encodeURIComponent(version)
+            + "&img="            + encodeURIComponent(curr_test_list[img_index]["Bilde"])
+            + "&atzimetas_sk="   + encodeURIComponent(atzimetas_sk)
+            + "&pareizas_sk="    + encodeURIComponent(pareizas_sk)
+            + "&nepareizas_sk="  + encodeURIComponent(nepareizas_sk)
+            + "&neatzimetas_sk=" + encodeURIComponent(neatzimetas_sk)
+            + "&time_spent="     + encodeURIComponent(duration);
+        fetch(url)
+        .then(response => response.text())
+        .then(result => {
+            // alert("Thank you! Your response has been saved.");
+            console.log("Server result:", result, "Run ID:", run_id);
+        })
+        .catch(error => {
+            alert("Radās kļūda iesniedzot iepriekšējo atbildi.");
+            console.error("Error:", error);
+        });
+    }
 
     // go to next image
     img_index++;
